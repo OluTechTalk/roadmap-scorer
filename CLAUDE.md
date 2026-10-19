@@ -8,9 +8,9 @@ PM story: every request feels urgent and there is one team's worth of capacity. 
 
 <!-- /end-session updates this block. Keep it to 5 lines. -->
 
-- Phase: Setup (not started)
-- Last session: none
-- Next target: Session 01 — scaffold, scoring module with tests, 11 example requests
+- Phase: P1 done (scoring core + 11 example requests); P2 table UI next
+- Last session: 01 (2026-10-19), scoring core, 45 tests passing
+- Next target: P2, editable table, formula switcher, localStorage, export and import
 - Blockers: none
 - Data: all requests are EXAMPLES, not real work
 

@@ -11,3 +11,29 @@
 - Free-text formulas: more flexible, but needs `eval` or a parser, a security and error-handling surface for little gain.
 
 **Why:** The product is a shareable single HTML file that anyone can open with no setup. Presets keep the formula visible and safe; why-not notes are built from each request's own numbers, so they are checkable. The cost is less flexible scoring and plainer note wording.
+
+## 2026-10-19: The cut line is a strict prefix of the ranking, with no backfill
+
+**Decision:** Now takes the highest-ranked requests until the next one would not fit, then stops. Next does the same for the following window. A request pushed down by a dependency does not let a lower-ranked request move up to use the freed weeks.
+
+**Options considered:**
+- Greedy fill (skip what does not fit, keep going): uses more of the capacity, but a lower-ranked small item can land above a higher-ranked big one, so "the cut line" stops meaning "everything above outranks everything below".
+- Re-run the fill after dependency pushes: tighter plans, but items would move up and down as one edit ripples through, which is hard to explain on a board.
+
+**Why:** The product is the public cut line. A clean prefix is the easiest rule to defend. The cost is unused weeks: with the example data at 12 weeks, Now holds 7.5 weeks because the dashboard is pushed to Next. The board shows weeks used against capacity so the gap is visible.
+
+## 2026-10-19: Oversize and cyclic requests go to Later and do not use up a window
+
+**Decision:** A request needing more weeks than one capacity window, or sitting in a dependency cycle, goes straight to Later with a stated reason. It does not stop the requests behind it from being placed.
+
+**Options considered:** Letting an oversize item block its lane (nothing behind it could ever be placed), or rejecting it as an error.
+
+**Why:** An oversize item is a legitimate request, so it should stay visible with the reason, not vanish or freeze the board. Cycles are warnings, not errors, so the user sees the loop and can break it.
+
+## 2026-10-19: Zero or invalid effort is rejected, not clamped
+
+**Decision:** A request with effort of 0 or less, impact outside 1 to 10, or confidence outside 0 to 1 is left out of the ranking and listed with a message.
+
+**Options considered:** Clamping effort to a small minimum (would give a near-infinite score and put a typo at the top of the board).
+
+**Why:** A silent clamp would produce a confident-looking wrong answer. A visible message is safer.
