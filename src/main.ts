@@ -2,6 +2,7 @@ import './style.css';
 import { EXAMPLE_LABEL, EXAMPLE_NOTE, EXAMPLE_REQUESTS } from './data/examples';
 import type { PresetId } from './score';
 import { clearSavedState, defaultState, loadState, saveState, type AppState } from './storage';
+import { mountBoard } from './ui/board';
 import { mountFileControls, mountFormula } from './ui/controls';
 import { h } from './ui/dom';
 import { renderIssues, renderRanked } from './ui/ranked';
@@ -23,6 +24,7 @@ const banner = h(
 const formulaRoot = h('div', {});
 const fileRoot = h('div', { class: 'toolbar' });
 const tableRoot = h('ul', { class: 'requests' });
+const boardRoot = h('div', {});
 const issuesRoot = h('ul', { class: 'issues', role: 'status' });
 const rankedRoot = h('div', {});
 const saveNote = h('p', { class: 'status error', role: 'status', hidden: true });
@@ -44,6 +46,7 @@ app.append(
       h('h2', { id: 'h-formula' }, 'Formula'),
       formulaRoot,
     ),
+    h('section', { 'aria-labelledby': 'h-board' }, h('h2', { id: 'h-board' }, 'Board'), boardRoot),
     h(
       'section',
       { 'aria-labelledby': 'h-requests' },
@@ -76,6 +79,10 @@ app.append(
 );
 
 const table = mountTable(tableRoot, state, (structural) => changed(structural));
+const board = mountBoard(boardRoot, state, (weeks) => {
+  state.capacity = weeks;
+  changed(false);
+});
 const formula = mountFormula(formulaRoot, state, {
   onPreset(id: PresetId) {
     state.preset = id;
@@ -114,6 +121,7 @@ mountFileControls(
 function changed(structural: boolean): void {
   if (structural) table.rebuild();
   else table.refresh();
+  board.render();
   renderRanked(rankedRoot, state);
   renderIssues(issuesRoot, state);
   banner.hidden = !state.requests.some((r) => exampleIds.has(r.id));

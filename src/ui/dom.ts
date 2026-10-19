@@ -29,3 +29,8 @@ export function clear(el: HTMLElement): void {
 export function fmt(n: number, digits = 2): string {
   return Number.isFinite(n) ? String(Number(n.toFixed(digits))) : '–';
 }
+
+/** '1 week', '12 weeks', '7.5 weeks'. */
+export function weeks(n: number): string {
+  return `${fmt(n)} ${n === 1 ? 'week' : 'weeks'}`;
+}
