@@ -1,0 +1,108 @@
+import type { Request } from '../score';
+
+/** Shown on screen until the user replaces the examples. */
+export const EXAMPLE_LABEL = 'EXAMPLE DATA';
+export const EXAMPLE_NOTE =
+  'Made-up requests for an imaginary AI support product. Impact is on an unlabelled 1 to 10 scale and every value is invented for illustration. None of this is real work.';
+
+export const EXAMPLE_REQUESTS: readonly Request[] = [
+  {
+    id: 'ex-01',
+    name: 'Saved-reply macros for the top 10 intents',
+    requester: 'Support lead',
+    impact: 6,
+    confidence: 0.9,
+    effort: 1.5,
+    dependsOn: [],
+  },
+  {
+    id: 'ex-02',
+    name: 'Cite the source article in every draft',
+    requester: 'Support ops',
+    impact: 7,
+    confidence: 0.8,
+    effort: 2,
+    dependsOn: [],
+  },
+  {
+    id: 'ex-03',
+    name: 'Thumbs up/down on each draft',
+    requester: 'Product',
+    impact: 5,
+    confidence: 0.9,
+    effort: 1,
+    dependsOn: [],
+  },
+  {
+    id: 'ex-04',
+    name: 'Decline refund and legal questions',
+    requester: 'Compliance',
+    impact: 8,
+    confidence: 0.7,
+    effort: 3,
+    dependsOn: [],
+  },
+  {
+    id: 'ex-05',
+    name: 'Knowledge-base gap report',
+    requester: 'Content manager',
+    impact: 6,
+    confidence: 0.6,
+    effort: 3,
+    dependsOn: ['ex-11'],
+  },
+  {
+    id: 'ex-06',
+    name: 'Auto-tag tickets by intent',
+    requester: 'Support ops',
+    impact: 5,
+    confidence: 0.8,
+    effort: 2.5,
+    dependsOn: [],
+  },
+  {
+    id: 'ex-07',
+    name: 'Draft replies in Spanish and German',
+    requester: 'Sales (EMEA)',
+    impact: 8,
+    confidence: 0.4,
+    effort: 8,
+    dependsOn: [],
+  },
+  {
+    id: 'ex-08',
+    name: 'Agent-assist sidebar inside the helpdesk',
+    requester: 'Head of support',
+    impact: 9,
+    confidence: 0.5,
+    effort: 10,
+    dependsOn: [],
+  },
+  {
+    id: 'ex-09',
+    name: 'Auto-resolve simple tickets without an agent',
+    requester: 'CEO',
+    impact: 10,
+    confidence: 0.3,
+    effort: 14,
+    dependsOn: ['ex-04', 'ex-06'],
+  },
+  {
+    id: 'ex-10',
+    name: 'Weekly draft-quality dashboard',
+    requester: 'Product',
+    impact: 8,
+    confidence: 0.8,
+    effort: 2.5,
+    dependsOn: ['ex-03', 'ex-11'],
+  },
+  {
+    id: 'ex-11',
+    name: 'Log every draft outcome to a table',
+    requester: 'Engineering',
+    impact: 3,
+    confidence: 0.9,
+    effort: 3,
+    dependsOn: [],
+  },
+];
