@@ -37,3 +37,14 @@
 **Options considered:** Clamping effort to a small minimum (would give a near-infinite score and put a typo at the top of the board).
 
 **Why:** A silent clamp would produce a confident-looking wrong answer. A visible message is safer.
+
+## 2026-10-19: Visuals are part of every phase and every post
+
+**Decision:** Each phase that changes the UI captures screenshots (`docs/screens/`) and a short click-through recording (`docs/demos/`), and each post embeds them. The post template's Visual section is now required for visible phases.
+
+**Options considered:**
+- GIFs: easiest to drop into a post, but need ffmpeg or a new package, neither pre-approved.
+- Playwright `.webm` recordings plus PNG screenshots: no new dependency, so used now.
+- Live link only: works once published, but nothing to show before then.
+
+**Why:** Reviewers should see the product without running it. If GIFs are wanted for LinkedIn, one extra tool needs approval; the recordings can be converted then.

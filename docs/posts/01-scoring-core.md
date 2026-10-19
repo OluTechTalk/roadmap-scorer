@@ -55,3 +55,7 @@ Next: the editable table.
 ## Short post (280 characters or fewer)
 
 Built the ranking engine for a roadmap scorer first: the cut line is a strict prefix of the ranking, so everything above it outranks everything below. 45 tests pass, on made-up example data. UI next.
+
+## Visual
+
+No visual: engine only. Visuals start in episode 02.

@@ -10,7 +10,7 @@ PM story: every request feels urgent and there is one team's worth of capacity. 
 
 - Phase: P1 done (scoring core + 11 example requests); P2 table UI next
 - Last session: 01 (2026-10-19), scoring core, 45 tests passing
-- Next target: P2, editable table, formula switcher, localStorage, export and import
+- Next target: P2, editable table, formula switcher, localStorage, export and import (capture visuals per the Visuals rule)
 - Blockers: none
 - Data: all requests are EXAMPLES, not real work
 
@@ -58,6 +58,12 @@ PM story: every request feels urgent and there is one team's worth of capacity. 
 - Works at 375px wide and in dark mode, usable by keyboard, with visible focus, and colours not carrying meaning alone (the lanes also have text labels).
 - Single file build under 300 KB.
 - 20+ unit tests covering ties, zero effort (reject or clamp with a message), dependency cycles (detect and show a message), capacity edges (0 weeks, huge capacity), and sensitivity.
+
+## Visuals (added 2026-10-19)
+- Every phase that changes what the user sees captures visuals: screenshots in `docs/screens/` (375px and desktop, light and dark) and a short click-through recording in `docs/demos/` (Playwright, `.webm`).
+- Every post under `docs/posts/` embeds or links those visuals in its Visual section so a reviewer sees what the build looks like without running it.
+- GIFs need a tool that is not pre-approved (ffmpeg or a GIF encoder). Ask before adding one. Until then use `.webm` plus PNG screenshots.
+- The published single-file build is itself the clickable demo.
 
 ## Rules
 
