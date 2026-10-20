@@ -8,7 +8,7 @@ summary: Finished the roadmap scorer as a single 29 kB HTML file with a README, 
 pmTakeaway: A case study is only as credible as its labels, so the README says "example data" before it says anything else.
 buildTakeaway: Reading the README's numbers from the running app, not from memory, keeps the write-up and the product from drifting apart.
 metric: 4 of 11 example requests committed in Now at 12 weeks
-commit: PLACEHOLDER
+commit: fa11539
 ---
 
 ## Log post (400-700 words, for the site)
