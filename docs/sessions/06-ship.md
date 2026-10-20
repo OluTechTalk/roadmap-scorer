@@ -16,7 +16,7 @@ Date: 2026-10-19. Run mode: autopilot.
 - Sensitivity on the default example data: nothing enters or leaves Now at plus or minus 0.2, and no rank changes.
 - The case-study "Chart" field is a screenshot path, because this build has no eval runs or results file. Time spent is left as "not tracked" instead of a guess.
 - Final state: 64 unit tests and 25 browser checks pass; lint and typecheck clean; `dist/index.html` is 29,264 bytes (29.26 kB, 10.17 kB gzip) against the 300 KB limit.
-- Workflow checks: `npm ci --dry-run` succeeds with the committed lockfile, and every tool's Node engine range includes Node 22, which the workflow uses. The workflow itself has not been run, since nothing was pushed.
+- Workflow checks: `npm ci --dry-run` succeeds with the committed lockfile, and every tool's Node engine range includes Node 22, which the workflow uses. The workflow itself was not run during the original session; it ran later on the first push (see Publishing).
 - Scan: no `fetch`, `XMLHttpRequest`, `eval` or external URLs in the source or the built file; no `.env` or keys tracked.
 
 ## Visuals captured
@@ -33,7 +33,7 @@ No new capture this phase. The README links the final screenshots (`docs/screens
 
 ## Open items for the owner
 
-- Review the example requests (checkpoint 1 was never answered with edits). The sensitivity readout reports no change on the current values; a close pair of requests would show the check doing something.
+- Optional: the 11 example requests are placeholders written by Claude; edit them if you want a different story. The sensitivity readout reports no change on the current values; a close pair of requests would show the check doing something.
 - Optional: also publish the single file as a Claude Artifact (case-study step 5). Not done.
 - Not tested: a screen reader.
 
