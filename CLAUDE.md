@@ -8,9 +8,9 @@ PM story: every request feels urgent and there is one team's worth of capacity. 
 
 <!-- /end-session updates this block. Keep it to 5 lines. -->
 
-- Phase: P3 done (board, capacity slider, cut line, screenshots); P4 why-not and sensitivity next
-- Last session: 03 (2026-10-19), board, 56 tests passing, build 23.7 kB
-- Next target: P4, drafted editable why-not notes below the cut line, plus/minus 0.2 sensitivity readout
+- Phase: P4 done (why-not notes, sensitivity readout); P5 polish next
+- Last session: 04 (2026-10-19), why-not and sensitivity, 64 tests, build 28.75 kB
+- Next target: P5, keyboard use, focus, error messages, size check, verify cut line moves
 - Blockers: none
 - Data: all requests are EXAMPLES, not real work
 
