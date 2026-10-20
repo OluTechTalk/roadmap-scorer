@@ -60,4 +60,4 @@ Roadmap scorer now drafts a "why not" for every request below the line, from its
 - Also captured: `p4-desktop-dark.png`, `p4-375-light.png`.
 - Click-through: `docs/demos/p4-click-through.webm`. Edit and reset a note, make two requests a close call, watch the readout report who crosses.
 - GIF for LinkedIn (under 5 MB): `docs/demos/p4-click-through.gif`.
-- Live demo link: not published yet.
+- Live demo link: https://olutechtalk.github.io/roadmap-scorer/

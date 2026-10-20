@@ -63,4 +63,4 @@ Turned my roadmap scorer's quality bar into a 25-check browser script: keyboard-
 - Also captured: `p5-desktop-light.png`, `p5-desktop-dark.png`, `p5-375-light.png`, `p5-375-dark.png`.
 - Click-through: `docs/demos/p5-click-through.webm`. Keyboard only: skip link, slider with arrow keys, zero effort, a dependency cycle.
 - GIF for LinkedIn (under 5 MB): `docs/demos/p5-click-through.gif`.
-- Live demo link: not published yet.
+- Live demo link: https://olutechtalk.github.io/roadmap-scorer/

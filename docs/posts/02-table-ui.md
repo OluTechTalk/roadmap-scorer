@@ -60,4 +60,4 @@ Roadmap scorer is now editable: change an impact or effort and the ranking moves
 - Also captured: `p2-desktop-dark.png`, `p2-375-light.png`.
 - Click-through: `docs/demos/p2-click-through.webm`. Edits an impact, switches the formula, then enters zero effort to show the error.
 - GIF for LinkedIn (under 5 MB): `docs/demos/p2-click-through.gif`.
-- Live demo link: not published yet.
+- Live demo link: https://olutechtalk.github.io/roadmap-scorer/

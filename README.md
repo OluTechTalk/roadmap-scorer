@@ -4,6 +4,8 @@ An interactive tool that ranks feature requests by expected gain per engineering
 
 > **EXAMPLE DATA.** The 11 requests that ship with the tool are made-up examples for an imaginary AI support product. Impact is on an unlabelled 1 to 10 scale and every value is invented for illustration. None of this is real work, and nothing here is a measured result.
 
+**Live demo:** https://olutechtalk.github.io/roadmap-scorer/
+
 Runs entirely in the browser as one self-contained HTML file. No backend, no API key, no model call, no cost.
 
 ## Case study
@@ -67,7 +69,7 @@ npm run verify       # 25 browser checks against dist/index.html
 
 `npm run verify`, `npm run capture` and the demo scripts need a one-off `npx playwright install chromium`. `npm run gifs` turns the recordings into GIFs and needs ffmpeg (`winget install Gyan.FFmpeg`).
 
-The built `dist/index.html` is about 29 kB and can be opened directly, shared as a file, or published. A GitHub Pages workflow is in `.github/workflows/pages.yml`; it runs on pushes to `main`, and nothing has been pushed from this repository by the build.
+The built `dist/index.html` is about 29 kB and can be opened directly or shared as a file. It is published with GitHub Pages at https://olutechtalk.github.io/roadmap-scorer/: the workflow in `.github/workflows/pages.yml` lints, type-checks, tests and builds, then deploys on every push to `main`.
 
 ## Tests and checks
 

@@ -60,4 +60,4 @@ Roadmap scorer now has a Now/Next/Later board and a capacity slider that moves t
 - Also captured: `p3-desktop-dark.png`, `p3-375-light.png`.
 - Click-through: `docs/demos/p3-click-through.webm`. Drags the capacity slider through 4, 8, 20, 30 and 12 weeks.
 - GIF for LinkedIn (under 5 MB): `docs/demos/p3-click-through.gif`.
-- Live demo link: not published yet.
+- Live demo link: https://olutechtalk.github.io/roadmap-scorer/

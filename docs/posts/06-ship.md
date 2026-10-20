@@ -15,12 +15,12 @@ commit: fa11539
 
 **The goal this episode.** Make the tool shareable and the story honest: one file anyone can open, and a write-up where every number traces to the app.
 
-**The product call.** The README opens with an EXAMPLE DATA notice and states plainly that the 11 requests and every value are made up. There are no adoption numbers, no users and no measured gains, because none exist. The "Result" is what the app itself shows on the example data. I also did not push or publish anything: the Pages workflow is written and waiting, and publishing is the owner's decision.
+**The product call.** The README opens with an EXAMPLE DATA notice and states plainly that the 11 requests and every value are made up. There are no adoption numbers, no users and no measured gains, because none exist. The "Result" is what the app itself shows on the example data. I held publishing until the owner asked for it, then pushed and deployed with GitHub Pages.
 
 **What I built.**
 
 - A README in the case-study format: problem, bet, result, role and tools, data note, and what I would do next.
-- A GitHub Pages workflow that lints, type-checks, tests, builds and deploys the single file. It has not been run, because nothing was pushed.
+- A GitHub Pages workflow that lints, type-checks, tests, builds and deploys the single file. It ran on the first push: lint, type-check, tests and build passed on GitHub's runner and the deploy succeeded.
 - The final single-file build: 29,264 bytes, about a tenth of the 300 KB limit.
 - A scan for secrets and network calls. None found.
 
@@ -56,4 +56,4 @@ Roadmap scorer is done: one 29 kB HTML file, no backend, no key. On made-up exam
 - Screenshot, 375px dark: `docs/screens/p5-375-dark.png`.
 - Click-through: `docs/demos/p3-click-through.webm` (the capacity slider moving the cut line) and `docs/demos/p5-click-through.webm` (keyboard-only use and error states).
 - GIFs for LinkedIn (each under 5 MB): `docs/demos/p3-click-through.gif` and `docs/demos/p5-click-through.gif`.
-- Live demo link: not published yet. The Pages workflow is ready; nothing has been pushed.
+- Live demo link: https://olutechtalk.github.io/roadmap-scorer/

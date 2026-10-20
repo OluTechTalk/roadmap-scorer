@@ -8,7 +8,7 @@ PM story: every request feels urgent and there is one team's worth of capacity. 
 
 <!-- /end-session updates this block. Keep it to 5 lines. -->
 
-- Phase: P6 done. All phases complete; not pushed or published
+- Phase: P6 done. All phases complete; published to GitHub Pages
 - Last session: 06 (2026-10-19), ship, README, Pages workflow, dist built (29.26 kB)
 - Next target: owner review of example requests, then decide on publishing (Pages or Artifact)
 - Blockers: none

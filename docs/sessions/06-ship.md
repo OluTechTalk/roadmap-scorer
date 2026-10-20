@@ -23,11 +23,18 @@ Date: 2026-10-19. Run mode: autopilot.
 
 No new capture this phase. The README links the final screenshots (`docs/screens/p5-*.png`) and recordings in `docs/demos/`.
 
+## Publishing (after the original run, at the owner's request)
+
+- Created no new repo: an empty public `OluTechTalk/roadmap-scorer` already existed, so the build was pushed to it. Pages was enabled with the workflow build type.
+- The first push was rejected because the GitHub login lacked the `workflow` scope; the owner re-authorised and the second push succeeded.
+- The workflow ran on the first push (lint, typecheck, tests and build, then deploy) and succeeded. The only warnings were that some actions run on Node 20 and are forced to Node 24.
+- Live check in a real browser at https://olutechtalk.github.io/roadmap-scorer/: HTTP 200, EXAMPLE DATA banner visible, 11 requests, "At 12 weeks: 4 of 11 requests committed in Now (7.5 weeks used). Lowest score in Now: 1.87.", and 2 of 11 in Now after moving the slider to 4 weeks, with no console errors.
+- GIFs were made with ffmpeg and are under 5 MB each (see `docs/DECISIONS.md`).
+
 ## Open items for the owner
 
 - Review the example requests (checkpoint 1 was never answered with edits). The sensitivity readout reports no change on the current values; a close pair of requests would show the check doing something.
-- Decide whether to publish: push to GitHub and enable Pages, or upload `dist/index.html` as a Claude Artifact. Neither has been done.
-- Decide whether to approve ffmpeg or a GIF encoder if GIFs are wanted for LinkedIn.
+- Optional: also publish the single file as a Claude Artifact (case-study step 5). Not done.
 - Not tested: a screen reader.
 
 ## Next
