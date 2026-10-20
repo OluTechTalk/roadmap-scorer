@@ -8,9 +8,9 @@ PM story: every request feels urgent and there is one team's worth of capacity. 
 
 <!-- /end-session updates this block. Keep it to 5 lines. -->
 
-- Phase: P4 done (why-not notes, sensitivity readout); P5 polish next
-- Last session: 04 (2026-10-19), why-not and sensitivity, 64 tests, build 28.75 kB
-- Next target: P5, keyboard use, focus, error messages, size check, verify cut line moves
+- Phase: P5 done (polish, 25-check verify script); P6 ship next
+- Last session: 05 (2026-10-19), polish, 25/25 verify checks, build 29.26 kB
+- Next target: P6, README, Pages workflow (do not push), final dist build
 - Blockers: none
 - Data: all requests are EXAMPLES, not real work
 
