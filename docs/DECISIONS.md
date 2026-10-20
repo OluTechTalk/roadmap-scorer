@@ -48,3 +48,13 @@
 - Live link only: works once published, but nothing to show before then.
 
 **Why:** Reviewers should see the product without running it. If GIFs are wanted for LinkedIn, one extra tool needs approval; the recordings can be converted then.
+
+## 2026-10-19: ffmpeg for GIFs, installed on the machine, not in the project
+
+**Decision:** Use ffmpeg (installed with winget) to convert the Playwright recordings to GIFs. `scripts/make-gifs.mjs` steps down frame rate and width until each GIF is under 5 MB.
+
+**Options considered:**
+- A JavaScript GIF encoder as an npm package: no system install, but lower colour quality and it would add a project dependency.
+- ffmpeg with a two-pass palette (`palettegen` then `paletteuse`): best colour and text clarity for UI recordings, reads the WebM files directly, and adds nothing to the project.
+
+**Why:** Quality was the stated priority and the project stays free of new dependencies. The cost is that GIF creation needs ffmpeg on the machine; the app and its tests do not.

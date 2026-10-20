@@ -56,6 +56,7 @@ One insight plus the link.
 
 - Mockup or screenshot: path under `docs/screens/` (for example `docs/screens/p2-table-desktop-light.png`), with a one-line caption saying what to look at.
 - Click-through: path to the short screen recording under `docs/demos/` (for example `docs/demos/p3-cut-line.webm`) showing the interaction the post describes, plus a one-line caption.
+- GIF of the click-through under 5 MB (`docs/demos/pN-click-through.gif`, made with `npm run gifs`) for LinkedIn and the README.
 - Live demo link, once published: the Pages URL of the single-file build, so a reviewer can click through it.
 - If a phase has no visible change (for example a scoring-only phase), write "no visual: engine only" instead of leaving it blank.
 ```

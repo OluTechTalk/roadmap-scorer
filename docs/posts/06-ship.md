@@ -55,4 +55,5 @@ Roadmap scorer is done: one 29 kB HTML file, no backend, no key. On made-up exam
 - Screenshot, desktop light: `docs/screens/p5-desktop-light.png`. The full tool: formula, board with the cut line, sensitivity, why-not notes and the editable table.
 - Screenshot, 375px dark: `docs/screens/p5-375-dark.png`.
 - Click-through: `docs/demos/p3-click-through.webm` (the capacity slider moving the cut line) and `docs/demos/p5-click-through.webm` (keyboard-only use and error states).
+- GIFs for LinkedIn (each under 5 MB): `docs/demos/p3-click-through.gif` and `docs/demos/p5-click-through.gif`.
 - Live demo link: not published yet. The Pages workflow is ready; nothing has been pushed.

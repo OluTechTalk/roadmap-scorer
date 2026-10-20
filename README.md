@@ -44,7 +44,16 @@ Runs entirely in the browser as one self-contained HTML file. No backend, no API
 | Light | `docs/screens/p5-desktop-light.png` | `docs/screens/p5-375-light.png` |
 | Dark | `docs/screens/p5-desktop-dark.png` | `docs/screens/p5-375-dark.png` |
 
-Click-through recordings (WebM) per phase are in `docs/demos/`, for example `p3-click-through.webm` (capacity slider moving the cut line) and `p5-click-through.webm` (keyboard-only use and error states). Earlier phases' screenshots are in `docs/screens/`.
+Click-throughs (GIF; WebM originals are alongside in `docs/demos/`):
+
+| Phase | What it shows |
+|---|---|
+| ![P2](docs/demos/p2-click-through.gif) | Edit an impact and the ranking moves; switch formula; zero effort shows an error |
+| ![P3](docs/demos/p3-click-through.gif) | The capacity slider moving the cut line |
+| ![P4](docs/demos/p4-click-through.gif) | Editing a why-not note; the sensitivity readout |
+| ![P5](docs/demos/p5-click-through.gif) | Keyboard-only use, zero effort and a dependency cycle |
+
+Earlier phases' screenshots are in `docs/screens/`.
 
 ## Run it
 
@@ -56,7 +65,7 @@ npm run build        # writes the single-file dist/index.html
 npm run verify       # 25 browser checks against dist/index.html
 ```
 
-`npm run verify`, `npm run capture` and the demo scripts need a one-off `npx playwright install chromium`.
+`npm run verify`, `npm run capture` and the demo scripts need a one-off `npx playwright install chromium`. `npm run gifs` turns the recordings into GIFs and needs ffmpeg (`winget install Gyan.FFmpeg`).
 
 The built `dist/index.html` is about 29 kB and can be opened directly, shared as a file, or published. A GitHub Pages workflow is in `.github/workflows/pages.yml`; it runs on pushes to `main`, and nothing has been pushed from this repository by the build.
 

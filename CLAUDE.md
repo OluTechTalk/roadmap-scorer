@@ -62,7 +62,7 @@ PM story: every request feels urgent and there is one team's worth of capacity. 
 ## Visuals (added 2026-10-19)
 - Every phase that changes what the user sees captures visuals: screenshots in `docs/screens/` (375px and desktop, light and dark) and a short click-through recording in `docs/demos/` (Playwright, `.webm`).
 - Every post under `docs/posts/` embeds or links those visuals in its Visual section so a reviewer sees what the build looks like without running it.
-- GIFs need a tool that is not pre-approved (ffmpeg or a GIF encoder). Ask before adding one. Until then use `.webm` plus PNG screenshots.
+- GIFs: ffmpeg is installed (approved 2026-10-19). `npm run gifs` converts `docs/demos/*.webm` to GIFs under 5 MB each.
 - The published single-file build is itself the clickable demo.
 
 ## Rules
