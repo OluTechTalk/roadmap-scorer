@@ -45,6 +45,12 @@ describe('export and import', () => {
     expect(result.ok && result.state.preset).toBe('impact-confidence-effort');
     expect(result.ok && result.state.capacity).toBe(40);
   });
+  it('keeps edited notes for known requests only and drops non-text notes', () => {
+    const result = parseState(
+      '{"requests":[{"id":"a","name":"A"}],"notes":{"a":"my reason","ghost":"x","b":5}}',
+    );
+    expect(result.ok && result.state.notes).toEqual({ a: 'my reason' });
+  });
   it('clamps capacity to 1 to 40 and defaults non-numbers to 12', () => {
     expect(clampCapacity(0)).toBe(1);
     expect(clampCapacity(100)).toBe(40);

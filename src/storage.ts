@@ -13,17 +13,21 @@ export interface AppState {
   requests: Request[];
   preset: PresetId;
   capacity: number;
+  /** Why-not notes the user has edited, by request id. Untouched drafts are not stored. */
+  notes: Record<string, string>;
 }
 
 export const STORAGE_KEY = 'roadmap-scorer:v1';
 const FORMAT_VERSION = 1;
 const MAX_REQUESTS = 200;
+const MAX_NOTE = 2000;
 
 export function defaultState(): AppState {
   return {
     requests: EXAMPLE_REQUESTS.map((r) => ({ ...r, dependsOn: [...r.dependsOn] })),
     preset: DEFAULT_PRESET,
     capacity: DEFAULT_CAPACITY,
+    notes: {},
   };
 }
 
@@ -83,7 +87,13 @@ export function parseState(text: string): ParseResult {
   }
   const preset = PRESETS.find((p) => p.id === raw.preset)?.id ?? DEFAULT_PRESET;
   const capacity = clampCapacity(toNumber(raw.capacity));
-  return { ok: true, state: { requests, preset, capacity } };
+  const notes: Record<string, string> = {};
+  if (isRecord(raw.notes)) {
+    for (const [id, text] of Object.entries(raw.notes)) {
+      if (typeof text === 'string' && seen.has(id)) notes[id] = text.slice(0, MAX_NOTE);
+    }
+  }
+  return { ok: true, state: { requests, preset, capacity, notes } };
 }
 
 /** Saved edits, or null when nothing is saved, storage is blocked, or the saved text is unusable. */

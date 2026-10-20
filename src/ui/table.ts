@@ -101,6 +101,7 @@ export function mountTable(
           const i = state.requests.indexOf(request);
           if (i < 0) return;
           state.requests.splice(i, 1);
+          delete state.notes[request.id];
           for (const r of state.requests) r.dependsOn = r.dependsOn.filter((d) => d !== request.id);
           onChange(true);
         },

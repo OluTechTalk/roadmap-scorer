@@ -411,3 +411,39 @@ export function sensitivity(
 
   return { usesConfidence: getPreset(presetId).usesConfidence, cases };
 }
+
+const num = (n: number): string => String(Number(n.toFixed(2)));
+
+/**
+ * A short draft of why a request is not in Now, built only from its own numbers. No model call.
+ * Meant to be edited by the user.
+ */
+export function whyNotDraft(p: Placed, result: Plan, presetId: PresetId): string {
+  const r = p.request;
+  const s = num(p.score);
+  if (result.cutoffScore === null) {
+    return `Nothing fits in ${num(result.capacity)} weeks of capacity, so everything is below the line. This request scores ${s} and needs ${num(r.effort)} weeks.`;
+  }
+  const cut = num(result.cutoffScore);
+  if (p.blockedReason) {
+    const side = p.score >= result.cutoffScore ? 'above' : 'below';
+    return `Scores ${s}, ${side} the cut-off of ${cut}. Held back: ${p.blockedReason}.`;
+  }
+  if (p.score >= result.cutoffScore) {
+    return `Scores ${s}, level with the cut-off of ${cut}, but needs ${num(r.effort)} weeks and did not fit in Now.`;
+  }
+  let text = `Scores ${s} against a cut-off of ${cut}, and needs ${num(r.effort)} weeks.`;
+  if (presetId === 'impact-confidence-effort') {
+    const best = r.impact / r.effort;
+    if (best < result.cutoffScore) {
+      text += ` Even at full confidence it would score ${num(best)}.`;
+    } else {
+      const needed = Math.ceil(((result.cutoffScore * r.effort) / r.impact) * 100 - 1e-9) / 100;
+      text += ` It would need confidence of ${num(needed)} to match the cut-off (now ${num(r.confidence)}).`;
+    }
+  } else if (presetId === 'impact-effort') {
+    const maxEffort = Math.floor((r.impact / result.cutoffScore) * 100 + 1e-9) / 100;
+    text += ` It would need effort of ${num(maxEffort)} weeks or less to match the cut-off.`;
+  }
+  return text;
+}

@@ -7,6 +7,9 @@ import {
   sensitivity,
   validate,
   validateRequest,
+  whyNotDraft,
+  type Placed,
+  type PresetId,
   type Request,
 } from '../src/score';
 
@@ -351,5 +354,63 @@ describe('sensitivity', () => {
     const s = sensitivity(items, 'impact-effort', 4);
     expect(s.usesConfidence).toBe(false);
     expect(s.cases.every((c) => c.rankChanges === 0 && c.enteredNow.length === 0)).toBe(true);
+  });
+});
+
+describe('why-not drafts', () => {
+  const draft = (items: Request[], id: string, capacity: number, preset: PresetId = ICE) => {
+    const p = plan(items, preset, capacity);
+    const placed = p.placed.find((x) => x.request.id === id) as Placed;
+    return whyNotDraft(placed, p, preset);
+  };
+  it('says even full confidence would not reach the cut-off when that is true', () => {
+    const items = [
+      req('top', { impact: 9, confidence: 1, effort: 2 }),
+      req('low', { impact: 6, confidence: 0.5, effort: 2 }),
+    ];
+    expect(draft(items, 'low', 2)).toBe(
+      'Scores 1.5 against a cut-off of 4.5, and needs 2 weeks. Even at full confidence it would score 3.',
+    );
+  });
+  it('gives the confidence that would match the cut-off when it is reachable', () => {
+    const items = [
+      req('top', { impact: 4, confidence: 1, effort: 2 }),
+      req('low', { impact: 10, confidence: 0.1, effort: 2 }),
+    ];
+    expect(draft(items, 'low', 2)).toBe(
+      'Scores 0.5 against a cut-off of 2, and needs 2 weeks. It would need confidence of 0.4 to match the cut-off (now 0.1).',
+    );
+  });
+  it('mentions the reason when a request is held back by a dependency', () => {
+    const items = [
+      req('feature', { impact: 9, effort: 2, dependsOn: ['base'] }),
+      req('base', { impact: 3, effort: 6 }),
+      req('filler', { impact: 5, effort: 6 }),
+    ];
+    expect(draft(items, 'feature', 8)).toBe(
+      'Scores 4.5, above the cut-off of 0.83. Held back: blocked by base (Next).',
+    );
+  });
+  it('mentions size when a request needs more than one window', () => {
+    const items = [req('top'), req('whale', { effort: 20 })];
+    expect(draft(items, 'whale', 12)).toMatch(
+      /Held back: needs 20 weeks, more than one 12-week window\.$/,
+    );
+  });
+  it('says level with the cut-off when a tie does not fit', () => {
+    const items = [
+      req('a', { impact: 4, confidence: 1, effort: 2 }),
+      req('b', { impact: 6, confidence: 1, effort: 3 }),
+    ];
+    expect(draft(items, 'b', 4)).toBe(
+      'Scores 2, level with the cut-off of 2, but needs 3 weeks and did not fit in Now.',
+    );
+  });
+  it('says nothing fits when capacity is 0', () => {
+    expect(draft([req('a')], 'a', 0)).toMatch(/^Nothing fits in 0 weeks/);
+  });
+  it('gives an effort ceiling for the impact ÷ effort preset', () => {
+    const items = [req('top', { impact: 8, effort: 2 }), req('low', { impact: 3, effort: 2 })];
+    expect(draft(items, 'low', 2, 'impact-effort')).toMatch(/effort of 0\.75 weeks or less/);
   });
 });
