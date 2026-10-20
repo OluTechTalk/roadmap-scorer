@@ -89,7 +89,7 @@ export function mountBoard(
             ? ' Nothing fits.'
             : ` Lowest score in Now: ${fmt(result.cutoffScore)}.`) +
           (result.excluded.length > 0
-            ? ` ${result.excluded.length} not ranked because of errors.`
+            ? ` ${result.excluded.length} ${result.excluded.length === 1 ? 'request is' : 'requests are'} not ranked because of an error; see Requests below.`
             : '');
 
     clear(board);

@@ -491,3 +491,21 @@ ul.sens {
   padding: 8px 12px;
   margin-bottom: 6px;
 }
+
+/* Skip link and spacing for messages above the board */
+.skip {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  background: var(--accent);
+  color: var(--accent-text);
+  padding: 8px 14px;
+  border-radius: 8px;
+  z-index: 10;
+}
+.skip:focus {
+  top: 8px;
+}
+[hidden] {
+  display: none !important;
+}

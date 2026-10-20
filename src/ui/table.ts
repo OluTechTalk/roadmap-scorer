@@ -104,6 +104,10 @@ export function mountTable(
           delete state.notes[request.id];
           for (const r of state.requests) r.dependsOn = r.dependsOn.filter((d) => d !== request.id);
           onChange(true);
+          // Keep keyboard focus in the list instead of dropping it to the page.
+          const left = root.querySelectorAll('li.req');
+          const target = left[Math.min(i, left.length - 1)]?.querySelector('input');
+          (target ?? document.querySelector<HTMLElement>('.add'))?.focus();
         },
       },
       'Remove',

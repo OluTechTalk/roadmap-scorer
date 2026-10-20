@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "capture": "node scripts/capture.mjs"
+    "capture": "node scripts/capture.mjs",
+    "verify": "node scripts/verify.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

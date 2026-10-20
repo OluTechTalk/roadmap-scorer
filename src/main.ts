@@ -23,6 +23,7 @@ const banner = h(
   ' ',
   EXAMPLE_NOTE,
 );
+const boardBadge = h('span', { class: 'badge' }, EXAMPLE_LABEL);
 const formulaRoot = h('div', {});
 const fileRoot = h('div', { class: 'toolbar' });
 const tableRoot = h('ul', { class: 'requests' });
@@ -34,6 +35,7 @@ const rankedRoot = h('div', {});
 const saveNote = h('p', { class: 'status error', role: 'status', hidden: true });
 
 app.append(
+  h('a', { class: 'skip', href: '#h-board' }, 'Skip to the board'),
   h(
     'header',
     {},
@@ -50,7 +52,13 @@ app.append(
       h('h2', { id: 'h-formula' }, 'Formula'),
       formulaRoot,
     ),
-    h('section', { 'aria-labelledby': 'h-board' }, h('h2', { id: 'h-board' }, 'Board'), boardRoot),
+    h(
+      'section',
+      { 'aria-labelledby': 'h-board' },
+      h('h2', { id: 'h-board' }, 'Board ', boardBadge),
+      issuesRoot,
+      boardRoot,
+    ),
     h(
       'section',
       { 'aria-labelledby': 'h-sens' },
@@ -83,7 +91,6 @@ app.append(
         },
         'Add request',
       ),
-      issuesRoot,
     ),
     h(
       'section',
@@ -144,7 +151,9 @@ function changed(structural: boolean): void {
   whyNot.render();
   renderRanked(rankedRoot, state);
   renderIssues(issuesRoot, state);
-  banner.hidden = !state.requests.some((r) => exampleIds.has(r.id));
+  const showExamples = state.requests.some((r) => exampleIds.has(r.id));
+  banner.hidden = !showExamples;
+  boardBadge.hidden = !showExamples;
   const saved = saveState(state);
   saveNote.hidden = saved;
   saveNote.textContent = saved
