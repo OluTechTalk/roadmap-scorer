@@ -8,9 +8,9 @@ PM story: every request feels urgent and there is one team's worth of capacity. 
 
 <!-- /end-session updates this block. Keep it to 5 lines. -->
 
-- Phase: P5 done (polish, 25-check verify script); P6 ship next
-- Last session: 05 (2026-10-19), polish, 25/25 verify checks, build 29.26 kB
-- Next target: P6, README, Pages workflow (do not push), final dist build
+- Phase: P6 done. All phases complete; not pushed or published
+- Last session: 06 (2026-10-19), ship, README, Pages workflow, dist built (29.26 kB)
+- Next target: owner review of example requests, then decide on publishing (Pages or Artifact)
 - Blockers: none
 - Data: all requests are EXAMPLES, not real work
 
